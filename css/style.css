@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100%;
+}
+.main {
+    width: 80%;
+    margin: auto;
+}
+.row {
+    width: 33rem;
+    min-height: 8rem;
+    max-height: 8rem;
+    border: 0.5px solid rgba(128, 128, 128, 0.56);
+    margin: auto;
+    margin-top: 3rem
+    
+}
+.row img {
+    width: auto;
+    max-width: 32.8%;
+    height: 8rem;
+    margin: auto;
+    padding: 0;
+}
+.img-container {
+    background-size: cover;
+    width: 28rem;
+    height: 20rem;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+    margin: auto;
+    border: 0.5px solid gray;
+    /*background: url('../img/gallery_26.jpg');*/
+}
+.img-container img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+}
+
+.btn {
+    margin: auto;
+    text-align: center;
+    margin-top: 1rem;
+}
