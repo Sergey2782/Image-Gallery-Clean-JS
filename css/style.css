@@ -14,7 +14,7 @@
     margin-top: 3rem
     
 }
-.row img {
+.row img{
     width: auto;
     max-width: 32.8%;
     height: 8rem;
@@ -42,4 +42,7 @@
     margin: auto;
     text-align: center;
     margin-top: 1rem;
+}
+.showSmall {
+    display: none;
 }
