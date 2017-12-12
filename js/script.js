@@ -3,15 +3,15 @@
                           //------  variables   ----//
 
 var img = document.querySelector('.show'),
+    img_start_val = img.getAttribute('src'), //---- начальное значение осн-й картинки
     img_small_s = document.querySelectorAll('.showSmall'),
     btn_forward = document.querySelector('.btn_forward'),
     btn_back = document.querySelector('.btn_back'),
     main = 4,
     prev = 3,
-    next = 5,
-    img_len = img_small_s.length;
-  
-                         //-------  events    -------//
+    next = 5;
+
+  //-------  events    -------//
 
     img_small_s.onload = ImagesOnLoad();
     btn_back.onclick = function() {switch_Image(-1)};
@@ -20,11 +20,11 @@ var img = document.querySelector('.show'),
  //-----  function for the correct loading row images on the web-page ---//
 
   function ImagesOnLoad(){
-      for(var i = 0; i < img_len; i ++ ){
-            img_small_s[i].setAttribute('src', img_small_s[i].getAttribute('data-src') );
-            if(i == prev  || i == main || i == next){
-                img_small_s[i].style.display = 'inline-block';
-            }
+      for(var i = 0; i < img_small_s.length; i ++ ){
+             img_small_s[i].setAttribute('src', img_small_s[i].getAttribute('data-src') );
+                if(i == prev  || i == main || i == next){
+                    img_small_s[i].style.display = 'inline-block';
+                }
         }
  }
 
@@ -55,7 +55,7 @@ var img = document.querySelector('.show'),
         img_small.setAttribute('src', img_small.getAttribute('data-src') );
         img_small.style.display = 'inline-block';
 
-             for(var i = 0; i < img_len; i ++ ){
+             for(var i = 0; i < img_small_s.length; i ++ ){
                         if(i == prev  || i == main || i == next){
                             img_small_s[i].style.display = 'inline-block';
                         }else {
@@ -67,7 +67,7 @@ var img = document.querySelector('.show'),
  function switch_Image(sym){
          opacity = 0;
          fade_Img(); 
-
+         var img_len = img_small_s.length;
          if(sym == -1){
                
                 main --; prev --; next --;
@@ -95,9 +95,7 @@ var img = document.querySelector('.show'),
                      next = 0;
                    };
                 };
-     
-            selectImgAndShow();
-     
+          selectImgAndShow();
 }
      
 
