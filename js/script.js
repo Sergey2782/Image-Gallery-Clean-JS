@@ -2,7 +2,7 @@
 
                           //------  variables   ----//
 
-var img = document.querySelector('#show'),
+var img = document.querySelector('.show'),
     img_small_s = document.querySelectorAll('.showSmall'),
     btn_forward = document.querySelector('.btn_forward'),
     btn_back = document.querySelector('.btn_back'),
@@ -13,23 +13,27 @@ var img = document.querySelector('#show'),
   
                          //-------  events    -------//
 
-    img.onload =  firstMainImageOnLoad();
-    btn_back.onclick = function() {switch_Image('minus')};
-    btn_forward.onclick = function() {switch_Image('plus')};
+    img_small_s.onload = ImagesOnLoad();
+    btn_back.onclick = function() {switch_Image(-1)};
+    btn_forward.onclick = function() {switch_Image(+1)};
    
- //-----  function for the correct loading FIRST images on the web-page ---//
+ //-----  function for the correct loading row images on the web-page ---//
 
-  function firstMainImageOnLoad(){
-         var dataSrc = img.getAttribute('data-src');
-         img.src = dataSrc;//---- assign to 'src' data from 'data-src'    
+  function ImagesOnLoad(){
+      for(var i = 0; i < img_len; i ++ ){
+            img_small_s[i].setAttribute('src', img_small_s[i].getAttribute('data-src') );
+            if(i == prev  || i == main || i == next){
+                img_small_s[i].style.display = 'inline-block';
+            }
+        }
  }
 
  //-----  function for beautiful  animation-effect  for change images -----//
 
-   function MyFadeFunction() {
+   function fade_Img() {
          if (opacity<1) {
              opacity += .03;
-             setTimeout(function(){MyFadeFunction()},25);
+             setTimeout(function(){fade_Img()},25);
          }
              img.style.opacity = opacity;
      }
@@ -62,9 +66,9 @@ var img = document.querySelector('#show'),
 
  function switch_Image(sym){
          opacity = 0;
-         MyFadeFunction(); 
+         fade_Img(); 
 
-         if(sym == 'minus'){
+         if(sym == -1){
                
                 main --; prev --; next --;
 
@@ -77,7 +81,6 @@ var img = document.querySelector('#show'),
                 if(next < 0){
                      next = img_len - 1;
                    };
-                    selectImgAndShow();
          }else{ 
 
                 main ++; prev ++; next ++;
@@ -91,8 +94,10 @@ var img = document.querySelector('#show'),
                 if(next > img_len - 1){
                      next = 0;
                    };
-                    selectImgAndShow();
                 };
+     
+            selectImgAndShow();
+     
 }
      
 
